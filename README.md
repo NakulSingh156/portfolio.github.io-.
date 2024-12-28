@@ -40,6 +40,6 @@ I am passionate about AI, Data Science and problem-solving. Here's a glimpse of 
 <br> 
 > “The only way to do great work is to love what you do.” – Steve Jobs
 >
-[About Me](index.html)
+[About Me](indexx.html)
 <br>
 [LearningPortfolio](homepage.io)
