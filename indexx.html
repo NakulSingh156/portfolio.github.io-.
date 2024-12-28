@@ -3,161 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Overview and Project Introduction</title>
-    <link rel="stylesheet" href="style.css"> <!-- Optional: link to external stylesheet -->
+    <title>Reflections</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
             line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background: #d5dde6;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         h1, h2, h3 {
-            color: #4CAF50;
+            color: #3a6ea5;
         }
-        .section {
-            margin-bottom: 30px;
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
         }
-        .section-header {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-left: 5px solid #4CAF50;
-        }
-        .sub-section {
-            margin-left: 20px;
+        h2 {
+            margin-top: 20px;
+            border-bottom: 2px solid #3a6ea5;
+            padding-bottom: 5px;
         }
         ul {
-            list-style-type: disc;
+            margin: 10px 0;
             padding-left: 20px;
         }
-        .questions {
-            color: #555;
-            font-size: 0.9em;
-            margin-top: 10px;
+        li {
+            margin-bottom: 5px;
+        }
+        .code {
+            background: #eef;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Course Overview and Project Introduction</h1>
-        <p>Welcome to the Data Structures and Algorithms course. In this course, we explore various data structures and algorithms and their applications to real-world problems.</p>
+        <h1>Reflections</h1>
     </header>
-
-    <!-- Course Introduction -->
-    <section class="section" id="course-introduction">
-        <div class="section-header">
-            <h2>Course Introduction</h2>
-        </div>
-        <p>This course provides an in-depth understanding of different data structures and algorithms and their applications. You will learn how to solve complex problems using techniques such as iteration, recursion, and dynamic programming. Key topics include:</p>
+    <div class="container">
+        <h2>Question 1: Challenges in Learning/Understanding These Concepts</h2>
+        <h3>Time Complexity Analysis</h3>
         <ul>
-            <li>Arrays and Linked Lists</li>
-            <li>Stacks and Queues</li>
-            <li>Trees (Binary Trees, AVL Trees, Red-Black Trees, Heaps, Tries)</li>
-            <li>Graphs (BFS, DFS, Shortest Paths, Spanning Trees)</li>
-            <li>Sorting and Searching Algorithms</li>
-            <li>Dynamic Programming and Greedy Algorithms</li>
+            <li>Abstract mathematical concepts like Big O, Omega, and Theta can be hard to grasp.</li>
+            <li>Applying these concepts to nested loops or recursion is tricky.</li>
+            <li>Ignoring constant factors and lower-order terms feels counterintuitive initially.</li>
         </ul>
-        <p>The course connects theoretical concepts to real-time applications such as database indexing, web scraping, route optimization in maps, and AI search algorithms.</p>
-    </section>
-
-    <!-- Course Project Introduction -->
-    <section class="section" id="project-introduction">
-        <div class="section-header">
-            <h2>Course Project Introduction</h2>
-        </div>
-        <p>The project focuses on applying data structures and algorithms to design solutions for urban planning. After reading the white paper on smart cities, we identified a set of problems in the context of city design, such as:</p>
+         
+        <h3>Binary Search Trees (BST)</h3>
         <ul>
-            <li>Optimizing traffic flow using graph algorithms.</li>
-            <li>Improving resource allocation using dynamic programming.</li>
-            <li>Building efficient routing systems for delivery services using Dijkstra’s or A* algorithm.</li>
+            <li>Operations often rely on recursion, which can be confusing.</li>
+            <li>Deletion is especially challenging, particularly when a node has two children.</li>
+            <li>Balanced BSTs require mastering complex rebalancing techniques like rotations.</li>
         </ul>
-        <p>The business cases were identified by analyzing the current challenges faced by cities and industries in managing resources, transportation, and urban growth. We split the project into smaller components, with each team member working on a specific aspect.</p>
 
-        <h3>Problem Definition</h3>
-        <p>Our team is focused on creating a dynamic, scalable system to optimize traffic in a smart city. We aim to integrate real-time data into an algorithmic solution that reduces congestion, improves traffic flow, and helps city planners make data-driven decisions.</p>
-
-        <h3>Team Members</h3>
+        <h3>DFS and BFS</h3>
         <ul>
-            <li><strong>Member 1:</strong> Traffic Flow Optimization (Algorithm Design)</li>
-            <li><strong>Member 2:</strong> Resource Allocation Modeling (Dynamic Programming)</li>
-            <li><strong>Member 3:</strong> Routing System for Delivery Services (Graph Algorithms)</li>
-            <li><strong>Member 4:</strong> Data Collection and Analysis (Real-Time Data Integration)</li>
+            <li>Recursive implementation of DFS and queue-based BFS can be error-prone.</li>
+            <li>Switching between adjacency lists and matrices adds complexity.</li>
         </ul>
-    </section>
 
-    <!-- Course Learning Reflections -->
-    <section class="section" id="learning-reflections">
-        <div class="section-header">
-            <h2>Course Learning Reflections</h2>
-        </div>
-        <p>In this section, each team member reflects on their learning from the course, focusing on the following aspects:</p>
+        <h3>Heap</h3>
+        <ul>
+            <li>Understanding the dual representation of heaps (binary tree and array) is challenging.</li>
+            <li>Heapify, insertion, and deletion operations require careful study.</li>
+        </ul>
 
-        <h3>1. Problem Types and Techniques</h3>
-        <div class="sub-section">
-            <p>In the real world, we encounter problems that require different strategies for solution. Some common problem types include:</p>
-            <ul>
-                <li>Iteration</li>
-                <li>Recursion</li>
-                <li>Backtracking</li>
-            </ul>
-            <p>Each of these techniques has its own advantages and is suited to different types of problems. Understanding when and how to apply them is crucial in solving complex problems efficiently.</p>
-        </div>
+        <h3>Sorting</h3>
+        <ul>
+            <li>Numerous algorithms with varying complexities can be overwhelming.</li>
+            <li>Implementing advanced algorithms like merge sort and quicksort demands attention to detail.</li>
+            <li>Choosing the best algorithm for a specific scenario isn’t always obvious.</li>
+        </ul>
 
-        <h3>2. Space and Time Efficiency</h3>
-        <div class="sub-section">
-            <p>Time and space complexity are important metrics for evaluating the efficiency of algorithms. We explore:</p>
-            <ul>
-                <li>Big-O Notation</li>
-                <li>Classes of Problems (NP-complete, Polynomial-time)</li>
-                <li>Trade-offs between time and space</li>
-            </ul>
-        </div>
+        <h3>Pattern Searching</h3>
+        <ul>
+            <li>Optimized algorithms like KMP and Boyer-Moore are complex to master.</li>
+            <li>Pre-processing steps, such as building partial match tables, can be confusing.</li>
+        </ul>
 
-        <h3>3. Design Principles</h3>
-        <div class="sub-section">
-            <p>Designing efficient algorithms requires understanding key principles such as:</p>
-            <ul>
-                <li>Divide and Conquer</li>
-                <li>Greedy Algorithms</li>
-                <li>Dynamic Programming</li>
-            </ul>
-        </div>
+        <h3>Graph Algorithms</h3>
+        <ul>
+            <li>Numerous variations make it difficult to choose the right one.</li>
+            <li>Understanding algorithm proofs and how graph representations affect performance is challenging.</li>
+        </ul>
 
-        <h3>4. Tree Data Structures</h3>
-        <div class="sub-section">
-            <p>We studied various types of tree data structures such as:</p>
-            <ul>
-                <li>Binary Search Trees (BST)</li>
-                <li>AVL Trees</li>
-                <li>Red-Black Trees</li>
-                <li>Heaps</li>
-                <li>Tries</li>
-            </ul>
-            <p>These data structures help in solving problems related to searching, sorting, and optimizing search operations.</p>
-        </div>
+        <h2>Question 2: Challenges in Correlating Concepts with Real-World Applications</h2>
+        <h3>Time Complexity Analysis</h3>
+        <ul>
+            <li>Bridging theoretical time complexity with real-world performance can be tricky.</li>
+        </ul>
 
-        <h3>5. Sorting and Searching Algorithms</h3>
-        <div class="sub-section">
-            <p>Different sorting algorithms such as QuickSort, MergeSort, and HeapSort were explored. We also studied searching algorithms and their real-world applications, such as:</p>
-            <ul>
-                <li>Binary Search</li>
-                <li>Linear Search</li>
-                <li>Search Trees</li>
-            </ul>
-        </div>
+        <h3>Binary Search Trees (BST)</h3>
+        <ul>
+            <li>Understanding their use in systems like databases requires in-depth knowledge.</li>
+        </ul>
 
-        <h3>6. Graph Algorithms</h3>
-        <div class="sub-section">
-            <p>Graph algorithms are essential for solving problems related to networks, paths, and relationships. We explored algorithms for:</p>
-            <ul>
-                <li>Spanning Trees (Prim's, Kruskal’s)</li>
-                <li>Shortest Paths (Dijkstra’s, Bellman-Ford)</li>
-            </ul>
-        </div>
-    </section>
+        <h3>DFS and BFS</h3>
+        <ul>
+            <li>Applications in network routing, web crawling, and puzzle-solving are not always intuitive.</li>
+        </ul>
 
-    <footer>
-        <p>Course Project by [Your Team Name]</p>
-    </footer>
+        <h3>Heap</h3>
+        <ul>
+            <li>Grasping how heaps work in systems like task schedulers requires familiarity with implementations.</li>
+        </ul>
+
+        <h3>Sorting</h3>
+        <ul>
+            <li>Understanding algorithm optimization in large-scale data processing can be difficult.</li>
+        </ul>
+
+        <h3>Pattern Searching</h3>
+        <ul>
+            <li>Tailoring and optimizing pattern searching for tools like search engines is challenging.</li>
+        </ul>
+
+        <h3>Graph Algorithms</h3>
+        <ul>
+            <li>Connecting algorithms to real-world systems like GPS navigation requires deep understanding.</li>
+        </ul>
+
+        <h2>Question 3: Determining the Most Efficient Approach/Design Techniques for Complex Problems</h2>
+        <h3>General Principles</h3>
+        <ul>
+            <li><strong>Understand the Problem:</strong> Fully grasp constraints and requirements.</li>
+            <li><strong>Analyze Algorithms:</strong> Compare time and space complexities.</li>
+            <li><strong>Pick the Right Data Structures:</strong> The right choice can simplify implementation.</li>
+            <li><strong>Weigh Trade-offs:</strong> Balance speed, memory, and simplicity.</li>
+            <li><strong>Optimize:</strong> Use techniques like caching or memoization where applicable.</li>
+        </ul>
+
+        <h3>Specific Considerations</h3>
+        <ul>
+            <li>Focus on solutions with lower time complexity for large datasets.</li>
+            <li>Choose algorithms with minimal space requirements if memory is limited.</li>
+            <li>Tailor approaches to exploit problem-specific characteristics.</li>
+            <li>Prioritize simplicity and maintainability alongside efficiency.</li>
+        </ul>
+    </div>
 </body>
 </html>
