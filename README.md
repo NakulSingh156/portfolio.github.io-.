@@ -10,9 +10,9 @@ I am passionate about AI, Data Science and problem-solving. Here's a glimpse of 
 - **Project Suply chain Management System
 
 ## 🚀 Skills
-- C++, Python, JavaScript
+- C++, Python and C
 - Data Structures and Algorithms
-- Web Development (React.js, Node.js)
+- AI and Data Science
 
 ## 🌐 Find Me Online
 - [GitHub](https://github.com/NakulSingh156)
@@ -21,16 +21,16 @@ I am passionate about AI, Data Science and problem-solving. Here's a glimpse of 
 ## Portfolio Topic
 
 <dl>
-<dt>course name</dt>
+<dt>Course name</dt>
 <dd>Algorithmic Problem Solving</dd>
 <dt>Design and Analysis of Algorithms</dt>
 <dd>24ECAP202</dd>
 <dt>Name</dt>
-<dd>Harshad Magdum</dd>
+<dd>Nakul Singh</dd>
 <dt>SRN</dt>
-<dd>01fe23bci002</dd>
+<dd>01FE23BCI074</dd>
 <dt>Course Instructor</dt>
-<dd>KMMR</dd>
+<dd>KMMR Sir</dd>
 <dt>University</dt>
 <dd>KLE Technological University</dd>
 <dt>Portfolio Topic/Domain</dt>
