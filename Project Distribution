@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Overview - Kaveri Vana (Smart City)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            color: #ffffff;
+        }
+        header {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        header h1 span {
+            display: block;
+            font-size: 1.5rem;
+            color: #facc15;
+        }
+        section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+        section h2, h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #06b6d4;
+            display: inline-block;
+        }
+        section p {
+            margin: 1rem 0;
+            line-height: 1.6;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: #1e293b;
+            color: #ffffff;
+            text-align: left;
+        }
+        table th, table td {
+            padding: 1rem;
+            border: 1px solid #ffffff;
+        }
+        .container {
+            width: 80%;
+            margin: 50px auto;
+        }
+        canvas {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        @media screen and (max-width: 768px) {
+            section {
+                padding: 1rem;
+            }
+            table, table th, table td {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Project Overview</h1>
+        <h1><span>Prakash Nagar</span></h1>
+    </header>
+    <section>
+        <h2>Welcome to Smart City Prakash Nagar</h2>
+        
+        <!-- Updated Table -->
+        <table>
+            <tr>
+                <th>Sl.No</th>
+                <th>Business Case Identified</th>
+                <th>Description</th>
+                <th>Owner</th>
+                <th>Probable Tools</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Listing all the public transports in the city.</td>
+                <td>List all the transports according to their seating capacity.</td>
+                <td>Praveen</td>
+                <td>Array</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Sorting all the public transports.</td>
+                <td>Sort them according to the average number of people board them per day.</td>
+                <td>Praveen</td>
+                <td>Merge Sort</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Collecting all the parking and toll fares.</td>
+                <td>Collect small toll and parking fares from all parts of city.</td>
+                <td>Anirudh Zalki</td>
+                <td>Doubly Linked List</td>
+            </tr>
+             <tr>
+                <td>4</td>
+                <td>Sorting all the fares.</td>
+                <td>Sort them from max number of money collected to least.</td>
+                <td>Anirudh Zalki</td>
+                <td>Heap Sort</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Tracking all the public transport</td>
+                <td>Track all of their movements for a better management.</td>
+                <td>Nakul Singh</td>
+                <td>Trees</td>
+            </tr>
+             <tr>
+                <td>6</td>
+                <td>Giving all the age groups the access of public transport.</td>
+                <td>Make a separate section in each transport for different age groups.</td>
+                <td>Nakul Singh</td>
+                <td>Linked List</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Sort the vehicles based on the pollution they produce.</td>
+                <td>Sort them in order from highest to least.</td>
+                <td>Ayush Nag</td>
+                <td>Heap Sort</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Implementing a common payment method </td>
+                <td>A common payment application for all types of payments.</td>
+                <td>Ayush Nag</td>
+                <td>Trees/Graph</td>
+            </tr>
+        </table>
+
+    </section>
+</body>
+</html>
