@@ -1,0 +1,126 @@
+
+#include <iostream>
+using namespace std;
+
+// Define a Node structure for the binary tree
+struct Node {
+    int value;
+    Node* left;
+    Node* right;
+
+    // Constructor to initialize a node
+    Node(int val) : value(val), left(nullptr), right(nullptr) {}
+};
+
+// BinaryTree class with basic operations
+class BinaryTree {
+private:
+    Node* root;
+
+    // Helper function for inserting nodes recursively
+    void insertRecursive(Node* &node, int value) {
+        if (node == nullptr) {
+            node = new Node(value);
+            return;
+        }
+
+        if (value < node->value)
+            insertRecursive(node->left, value);
+        else
+            insertRecursive(node->right, value);
+    }
+
+    // In-order Traversal (left, root, right)
+    void inorderRecursive(Node* node) {
+        if (node == nullptr)
+            return;
+        inorderRecursive(node->left);
+        cout << node->value << " ";
+        inorderRecursive(node->right);
+    }
+
+    // Pre-order Traversal (root, left, right)
+    void preorderRecursive(Node* node) {
+        if (node == nullptr)
+            return;
+        cout << node->value << " ";
+        preorderRecursive(node->left);
+        preorderRecursive(node->right);
+    }
+
+    // Post-order Traversal (left, right, root)
+    void postorderRecursive(Node* node) {
+        if (node == nullptr)
+            return;
+        postorderRecursive(node->left);
+        postorderRecursive(node->right);
+        cout << node->value << " ";
+    }
+
+public:
+    // Constructor to initialize an empty tree
+    BinaryTree() : root(nullptr) {}
+
+    // Function to insert a new value into the tree
+    void insert(int value) {
+        insertRecursive(root, value);
+    }
+
+    // In-order Traversal
+    void inorder() {
+        inorderRecursive(root);
+        cout << endl;
+    }
+
+    // Pre-order Traversal
+    void preorder() {
+        preorderRecursive(root);
+        cout << endl;
+    }
+
+    // Post-order Traversal
+    void postorder() {
+        postorderRecursive(root);
+        cout << endl;
+    }
+
+    // Function to search a value in the tree
+    bool find(int value) {
+        Node* current = root;
+        while (current != nullptr) {
+            if (current->value == value) return true;
+            else if (value < current->value) current = current->left;
+            else current = current->right;
+        }
+        return false;
+    }
+};
+
+// Main function to test the BinaryTree class
+int main() {
+    BinaryTree bt;
+
+    // Insert some nodes into the tree
+    bt.insert(10);
+    bt.insert(5);
+    bt.insert(15);
+    bt.insert(3);
+    bt.insert(7);
+    bt.insert(12);
+    bt.insert(17);
+
+    cout << "In-order Traversal: ";
+    bt.inorder();  // Expected: 3 5 7 10 12 15 17
+
+    cout << "Pre-order Traversal: ";
+    bt.preorder();  // Expected: 10 5 3 7 15 12 17
+
+    cout << "Post-order Traversal: ";
+    bt.postorder();  // Expected: 3 7 5 12 17 15 10
+
+    // Search for some nodes
+    cout << "Is 7 in the tree? " << (bt.find(7) ? "Yes" : "No") << endl;
+    cout << "Is 20 in the tree? " << (bt.find(20) ? "Yes" : "No") << endl;
+
+    return 0;
+}
