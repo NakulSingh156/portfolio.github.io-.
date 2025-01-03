@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .status-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transport Management System</h1>
+    <div class="container">
+        <h2>Manage Transport Units</h2>
+        <button class="button" onclick="addTransportUnit()">Add Transport Unit</button>
+        <button class="button" onclick="displayAllTransportUnits()">Display All Transport Units</button>
+        <button class="button" onclick="searchTransportUnit()">Search Transport Unit by ID</button>
+        <button class="button" onclick="updateTransportUnitStatus()">Update Transport Unit Status</button>
+
+        <div id="statusMessage" class="status-info"></div>
+        <div id="transportInfo"></div>
+    </div>
+
+    <script>
+        // TransportUnit Class
+        class TransportUnit {
+            constructor(id, type, currentLocation, nextStop, scheduledTime, status) {
+                this.id = id;
+                this.type = type;
+                this.currentLocation = currentLocation;
+                this.nextStop = nextStop;
+                this.scheduledTime = scheduledTime;
+                this.status = status;
+            }
+
+            displayInfo() {
+                return `
+                    <strong>ID:</strong> ${this.id}<br>
+                    <strong>Type:</strong> ${this.type}<br>
+                    <strong>Current Location:</strong> ${this.currentLocation}<br>
+                    <strong>Next Stop:</strong> ${this.nextStop}<br>
+                    <strong>Scheduled Time:</strong> ${this.scheduledTime}<br>
+                    <strong>Status:</strong> ${this.status}
+                `;
+            }
+        }
+
+        // TransportTree Class (Binary Search Tree)
+        class TransportTree {
+            constructor() {
+                this.root = null;
+            }
+
+            // Insert a transport unit in the tree
+            insert(transportUnit) {
+                if (this.root === null) {
+                    this.root = transportUnit;
+                } else {
+                    this._insertNode(this.root, transportUnit);
+                }
+            }
+
+            // Helper function to insert node in the tree
+            _insertNode(node, transportUnit) {
+                if (transportUnit.id < node.id) {
+                    if (node.left === undefined) {
+                        node.left = transportUnit;
+                    } else {
+                        this._insertNode(node.left, transportUnit);
+                    }
+                } else {
+                    if (node.right === undefined) {
+                        node.right = transportUnit;
+                    } else {
+                        this._insertNode(node.right, transportUnit);
+                    }
+                }
+            }
+
+            // In-order traversal to display all transport units
+            displayAll(node = this.root) {
+                let result = '';
+                if (node !== undefined) {
+                    result += this.displayAll(node.left);
+                    result += node.displayInfo() + '<hr>';
+                    result += this.displayAll(node.right);
+                }
+                return result;
+            }
+
+            // Search for a transport unit by ID
+            search(id, node = this.root) {
+                if (node === undefined || node.id === id) {
+                    return node;
+                }
+
+                if (id < node.id) {
+                    return this.search(id, node.left);
+                } else {
+                    return this.search(id, node.right);
+                }
+            }
+
+            // Update the status of a transport unit by ID
+            updateStatus(id, newStatus, node = this.root) {
+                let unit = this.search(id, node);
+                if (unit !== undefined) {
+                    unit.status = newStatus;
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        // Create a transport tree and populate it
+        let transportTree = new TransportTree();
+        transportTree.insert(new TransportUnit("B001", "Bus", "Station A", "Station B", "08:30 AM", "On Time"));
+        transportTree.insert(new TransportUnit("T001", "Train", "Station X", "Station Y", "09:00 AM", "Delayed"));
+        transportTree.insert(new TransportUnit("B002", "Bus", "Station B", "Station C", "09:15 AM", "On Time"));
+        transportTree.insert(new TransportUnit("T002", "Train", "Station Z", "Station A", "08:45 AM", "On Time"));
+
+        // Function to Add Transport Unit
+        function addTransportUnit() {
+            let id = prompt('Enter Transport Unit ID:');
+            let type = prompt('Enter Transport Unit Type (e.g., Bus, Train):');
+            let currentLocation = prompt('Enter Current Location:');
+            let nextStop = prompt('Enter Next Stop:');
+            let scheduledTime = prompt('Enter Scheduled Time:');
+            let status = prompt('Enter Status (On time/Delayed):');
+
+            const newUnit = new TransportUnit(id, type, currentLocation, nextStop, scheduledTime, status);
+            transportTree.insert(newUnit);
+            displayMessage(`Transport Unit with ID ${id} added successfully.`);
+        }
+
+        // Function to Display All Transport Units
+        function displayAllTransportUnits() {
+            let output = transportTree.displayAll();
+            document.getElementById('transportInfo').innerHTML = `<h3>All Transport Units:</h3>${output}`;
+        }
+
+        // Function to Search Transport Unit by ID
+        function searchTransportUnit() {
+            let searchID = prompt('Enter Transport Unit ID to search:');
+            const unit = transportTree.search(searchID);
+
+            if (unit !== undefined) {
+                document.getElementById('statusMessage').innerHTML = `
+                    <h4>Details of Transport Unit ${searchID}:</h4>
+                    ${unit.displayInfo()}
+                `;
+            } else {
+                document.getElementById('statusMessage').innerHTML = `
+                    <span class="error">Transport unit with ID ${searchID} not found!</span>
+                `;
+            }
+        }
+
+        // Function to Update Status of Transport Unit
+        function updateTransportUnitStatus() {
+            let searchID = prompt('Enter Transport Unit ID to update status:');
+            let newStatus = prompt('Enter new status (On time/Delayed):');
+            let result = transportTree.updateStatus(searchID, newStatus);
+
+            if (result) {
+                displayMessage(`Status of Transport Unit ${searchID} updated to ${newStatus}.`);
+                displayAllTransportUnits();
+            } else {
+                displayMessage(`Transport unit with ID ${searchID} not found!`, true);
+            }
+        }
+
+        // Display a message in the status section
+        function displayMessage(message, isError = false) {
+            const messageElement = document.getElementById('statusMessage');
+            messageElement.innerHTML = `<div class="${isError ? 'error' : ''}">${message}</div>`;
+        }
+    </script>
+</body>
+</html>
