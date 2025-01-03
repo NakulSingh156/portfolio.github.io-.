@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .status-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e8f5e9;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Transport Management System</h1>
+    <div class="container">
+        <h2>Manage Transport Units</h2>
+        <button class="button" onclick="addTransportUnit()">Add Transport Unit</button>
+        <button class="button" onclick="displayTransportUnits()">Display All Transport Units</button>
+
+        <div id="statusMessage" class="status-info"></div>
+
+        <h3>Manage Transport Sections</h3>
+        <form id="sectionForm">
+            <label for="sectionName">Section Name:</label>
+            <input type="text" id="sectionName" required>
+            <label for="capacity">Capacity:</label>
+            <input type="number" id="capacity" required>
+            <button type="button" class="button" onclick="addSection()">Add Section</button>
+        </form>
+
+        <h3>Assign Passengers to Sections</h3>
+        <form id="assignForm">
+            <label for="ageGroup">Age Group:</label>
+            <input type="text" id="ageGroup" required>
+            <label for="passengerCount">Passenger Count:</label>
+            <input type="number" id="passengerCount" required>
+            <button type="button" class="button" onclick="assignPassengers()">Assign Passengers</button>
+        </form>
+    </div>
+
+    <script>
+        // Transport Unit Class
+        class TransportUnit {
+            constructor(id, type, currentLocation, nextStop, scheduledTime, status) {
+                this.id = id;
+                this.type = type;
+                this.currentLocation = currentLocation;
+                this.nextStop = nextStop;
+                this.scheduledTime = scheduledTime;
+                this.status = status;
+            }
+
+            displayInfo() {
+                return `
+                    ID: ${this.id}<br>
+                    Type: ${this.type}<br>
+                    Current Location: ${this.currentLocation}<br>
+                    Next Stop: ${this.nextStop}<br>
+                    Scheduled Time: ${this.scheduledTime}<br>
+                    Status: ${this.status}
+                `;
+            }
+        }
+
+        // Transport Section Class
+        class TransportSection {
+            constructor(name, capacity) {
+                this.name = name;
+                this.capacity = capacity;
+                this.passengerCount = 0;
+            }
+
+            assignPassengers(count) {
+                if (this.passengerCount + count <= this.capacity) {
+                    this.passengerCount += count;
+                    return true;
+                }
+                return false; // Capacity issue
+            }
+        }
+
+        // Global Data
+        let transportUnits = [];
+        let sections = [];
+
+        // Function to Add Transport Unit
+        function addTransportUnit() {
+            let id = prompt('Enter Transport Unit ID:');
+            let type = prompt('Enter Transport Unit Type (e.g., Bus, Train):');
+            let currentLocation = prompt('Enter Current Location:');
+            let nextStop = prompt('Enter Next Stop:');
+            let scheduledTime = prompt('Enter Scheduled Time:');
+            let status = prompt('Enter Status (On time/Delayed):');
+
+            const newUnit = new TransportUnit(id, type, currentLocation, nextStop, scheduledTime, status);
+            transportUnits.push(newUnit);
+
+            displayMessage(`Transport Unit with ID ${id} added successfully.`);
+        }
+
+        // Function to Display All Transport Units
+        function displayTransportUnits() {
+            let output = '<h3>All Transport Units:</h3>';
+            transportUnits.forEach(unit => {
+                output += `<div>${unit.displayInfo()}</div><hr>`;
+            });
+            document.getElementById('statusMessage').innerHTML = output;
+        }
+
+        // Function to Add Section
+        function addSection() {
+            const name = document.getElementById('sectionName').value;
+            const capacity = parseInt(document.getElementById('capacity').value);
+
+            if (!name || !capacity) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            const newSection = new TransportSection(name, capacity);
+            sections.push(newSection);
+
+            document.getElementById('sectionName').value = '';
+            document.getElementById('capacity').value = '';
+            displayMessage(`Section ${name} with capacity ${capacity} added successfully.`);
+        }
+
+        // Function to Assign Passengers
+        function assignPassengers() {
+            const ageGroup = document.getElementById('ageGroup').value;
+            const passengerCount = parseInt(document.getElementById('passengerCount').value);
+
+            const section = sections.find(s => s.name.toLowerCase() === ageGroup.toLowerCase());
+
+            if (!section) {
+                displayMessage("Section not found.", true);
+                return;
+            }
+
+            const success = section.assignPassengers(passengerCount);
+            if (success) {
+                displayMessage(`${passengerCount} passengers assigned to ${ageGroup} section.`);
+            } else {
+                displayMessage(`Capacity exceeded! Cannot assign ${passengerCount} passengers to ${ageGroup} section.`, true);
+            }
+        }
+
+        // Function to Display Messages
+        function displayMessage(message, isError = false) {
+            const messageElement = document.getElementById('statusMessage');
+            messageElement.innerHTML = `<div class="${isError ? 'error' : ''}">${message}</div>`;
+        }
+    </script>
+</body>
+</html>
